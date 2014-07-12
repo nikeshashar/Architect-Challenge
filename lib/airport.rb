@@ -16,6 +16,7 @@ class Airport
 	end
 
 	def land(plane)
+		raise "Sorry we have no space here" if full?
 		raise "Turn around - too stormy" if stormy?
 		planes << plane
 	end
@@ -28,6 +29,5 @@ class Airport
 	def full?
 		planes.count == capacity 	
 	end
-
 
 end

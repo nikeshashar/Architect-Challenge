@@ -28,10 +28,7 @@ describe Plane do
 	  	expect(plane.land!).not_to be_flying
 	end
 
-	it 'cannot land if the airport is full' do
-	    airport = double :airport, take_off: :plane
-	    
-	end
+	
 
  #  	it 'cannot take off in bad weather' do
 	

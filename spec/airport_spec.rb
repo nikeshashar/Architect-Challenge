@@ -28,6 +28,11 @@ describe Airport do
       airport.clearTTO(plane)
       expect(airport.planes).to eq([])
     end
+
+    it 'cannot allow plane to land if full' do
+      fill_airport
+      expect{airport.land(plane)}.to raise_error(RuntimeError)
+  end
   end
   
   context 'traffic control' do

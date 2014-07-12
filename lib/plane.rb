@@ -18,7 +18,5 @@ attr_reader :flying
 	def take_off
 		@flying = true
 		self
-	end	
-
-	
+	end
 end
