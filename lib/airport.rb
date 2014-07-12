@@ -1,7 +1,7 @@
 class Airport
 
 	DEFAULT_CAPACITY = 100
-
+	require 'weather'
 
 	def planes
 		@planes ||=[]
@@ -16,10 +16,12 @@ class Airport
 	end
 
 	def land(plane)
+		raise "Turn around - too stormy" if stormy?
 		planes << plane
 	end
 
 	def clearTTO(plane)
+		raise "Go back!" if stormy?
 		planes.delete(plane)
 	end
 

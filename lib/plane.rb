@@ -20,7 +20,5 @@ attr_reader :flying
 		self
 	end	
 
-	def full
-
-	end
+	
 end

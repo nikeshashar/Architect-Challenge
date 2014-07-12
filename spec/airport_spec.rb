@@ -1,7 +1,5 @@
 require 'airport'
-
-
-
+require 'weather'
 describe Airport do
 
   let(:airport)       { Airport.new   }
@@ -12,12 +10,16 @@ describe Airport do
     Airport::DEFAULT_CAPACITY.times {airport.land(plane)}
   end
  
+  before(:each) do
+    allow(airport).to receive(:stormy?).and_return(false)
+  end
+
   context 'taking off and landing' do
     
     it 'a plane can land' do
       expect(airport.plane_count).to eq (0)
       airport.land(plane)
-      expect(airport.plane_count).to eq (1)
+      expect(airport.planes).to eq ([plane])
     end
     
     it 'a plane can take off' do
@@ -37,21 +39,14 @@ describe Airport do
     end
   end 
 
-    
     context 'weather conditions' do
-      it 'a plane cannot take off when there is a storm brewing' do
       
+      it 'a plane cannot land in a storm' do
+        allow(airport).to receive(:stormy?).and_return(true)
+        expect{airport.clearTTO(plane)}.to raise_error(RuntimeError)
       end
-      
-      it 'a plane cannot land in the middle of a storm' do
-      
-      end
-    end
-  
+    end 
 end
-
-
-
 
 describe "The gand finale (last spec)" do
   it 'all planes can land and all planes can take off' do

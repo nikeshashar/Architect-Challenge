@@ -2,7 +2,7 @@ require 'plane'
 
 describe Plane do
 
-  let(:plane) 			{ Plane.new }
+  let(:plane) 			{ Plane.new 	  }
   let(:grounded_plane)	{ Plane.new.land! }
   
 	it 'has a flying status when created' do
@@ -14,13 +14,13 @@ describe Plane do
 	end
 
 	it 'can take off' do
-	  	airport = double :airport
+	  	#airport = double :airport
 	  	grounded_plane.take_off
 	  	expect(grounded_plane).to be_flying
 	end
 
 	it 'should be flying after take off' do
-	  	airport = double :airport, take_off_from: :plane
+	  	
 	  	expect(grounded_plane.take_off).to be_flying
 	end
 
@@ -29,16 +29,17 @@ describe Plane do
 	end
 
 	it 'cannot land if the airport is full' do
-	  
+	    airport = double :airport, take_off: :plane
+	    
 	end
 
-  	it 'cannot take off in bad weather' do
+ #  	it 'cannot take off in bad weather' do
 	
-	end
+	# end
 
-	it 'has a name when created' do 
+	# it 'has a name when created' do 
 
-	end
+	# end
 
 end
 
