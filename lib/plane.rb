@@ -6,8 +6,9 @@ attr_reader :flying
 		@flying = true
 	end
 	
-	def take_off_from(airport)
-		airport.clearTTO_plane
+	def take_off
+		@flying = true
+		self
 	end	
 
 	def flying?
@@ -18,6 +19,5 @@ attr_reader :flying
 		@flying = false
 		self
 	end
-
 
 end
