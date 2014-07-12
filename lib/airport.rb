@@ -1,5 +1,6 @@
 class Airport
 
+	DEFAULT_CAPACITY = 100
 
 
 	def planes
