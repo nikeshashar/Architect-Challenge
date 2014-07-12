@@ -4,9 +4,13 @@ require 'plane'
 
 describe Airport do
 
-  let(:airport)   { Airport.new  }
-  let(:plane)     {double :plane }
-  let(:landed_plane)  {plane.land!}
+  let(:airport)       { Airport.new   }
+  let(:plane)         { double :plane }
+  let(:landed_plane)  { plane.land!   }
+
+  def fill_airport
+    Airport::DEFAULT_CAPACITY.times {airport.land(plane)}
+  end
  
   context 'taking off and landing' do
     
@@ -26,8 +30,10 @@ describe Airport do
   
   context 'traffic control' do
     
-    it 'a plane cannot land if the airport is full' do
-
+    it 'should know when the airport is full' do
+      expect(airport).not_to be_full
+      fill_airport
+      expect(airport).to be_full 
     end
   end 
 

@@ -7,6 +7,10 @@ class Airport
 		@planes ||=[]
 	end
 
+	def capacity
+		@capacity ||= DEFAULT_CAPACITY
+	end
+
 	def plane_count
 		planes.count 
 	end
@@ -19,7 +23,9 @@ class Airport
 		planes.delete(plane)
 	end
 
-
+	def full?
+		planes.count == capacity 	
+	end
 
 
 end

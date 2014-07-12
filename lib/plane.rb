@@ -19,4 +19,8 @@ attr_reader :flying
 		@flying = true
 		self
 	end	
+
+	def full
+
+	end
 end
