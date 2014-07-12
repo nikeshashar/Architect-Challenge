@@ -30,7 +30,5 @@ class Airport
 		planes.count == capacity 	
 	end
 
-	def stormy?
-		false
-	end
+	
 end

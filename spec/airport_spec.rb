@@ -2,9 +2,10 @@ require 'airport'
 # require 'weather'
 describe Airport do
 
-  let(:airport)       { Airport.new   }
-  let(:plane)         { double :plane }
-  let(:landed_plane)  { plane.land!   }
+  let(:airport)       { Airport.new           }
+  let(:plane)         { double :plane         }
+  let(:landed_plane)  { double :plane, land!  }
+
 
   def fill_airport
     airport.capacity.times {airport.land(plane)}
@@ -32,7 +33,8 @@ describe Airport do
     it 'cannot allow plane to land if full' do
       fill_airport
       expect{airport.land(plane)}.to raise_error(RuntimeError)
-  end
+    end
+  
   end
   
   context 'traffic control' do
@@ -53,7 +55,7 @@ describe Airport do
     end 
 end
 
-describe "The gand finale (last spec)" do
+describe "The grand finale (last spec)" do
   it 'all planes can land and all planes can take off' do
   end
 end
