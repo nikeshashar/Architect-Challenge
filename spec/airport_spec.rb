@@ -1,5 +1,5 @@
 require 'airport'
-require 'weather'
+# require 'weather'
 describe Airport do
 
   let(:airport)       { Airport.new   }
@@ -7,7 +7,7 @@ describe Airport do
   let(:landed_plane)  { plane.land!   }
 
   def fill_airport
-    Airport::DEFAULT_CAPACITY.times {airport.land(plane)}
+    airport.capacity.times {airport.land(plane)}
   end
  
   before(:each) do

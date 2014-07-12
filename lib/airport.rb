@@ -1,7 +1,7 @@
 class Airport
 
 	DEFAULT_CAPACITY = 100
-	require 'weather'
+	# require 'weather'
 
 	def planes
 		@planes ||=[]
@@ -30,4 +30,7 @@ class Airport
 		planes.count == capacity 	
 	end
 
+	def stormy?
+		false
+	end
 end

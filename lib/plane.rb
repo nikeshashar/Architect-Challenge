@@ -19,4 +19,8 @@ attr_reader :flying
 		@flying = true
 		self
 	end
+
+	def land_on(airport)
+		land!
+	end
 end

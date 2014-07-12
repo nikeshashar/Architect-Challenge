@@ -13,14 +13,12 @@ describe Plane do
 		expect(plane.land!).not_to be_flying
 	end
 
-	it 'can take off' do
-	  	#airport = double :airport
+	it 'can take off' do 
 	  	grounded_plane.take_off
 	  	expect(grounded_plane).to be_flying
 	end
 
 	it 'should be flying after take off' do
-	  	
 	  	expect(grounded_plane.take_off).to be_flying
 	end
 
@@ -28,7 +26,12 @@ describe Plane do
 	  	expect(plane.land!).not_to be_flying
 	end
 
-	
+	it 'should land at an airport' do
+		airport = double :airport
+		plane.land_on airport
+		expect(plane).not_to be_flying
+	end
+
 
  #  	it 'cannot take off in bad weather' do
 	
