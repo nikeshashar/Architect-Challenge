@@ -1,8 +1,13 @@
-class Plane
-	
-attr_reader :flying
+require_relative 'planename'
 
-	def initialize
+class Plane
+
+include PlaneNamer
+	
+attr_reader :flying, :name
+
+	def initialize(name = plane_name)
+		@name = name 
 		@flying = true
 	end
 
@@ -15,7 +20,7 @@ attr_reader :flying
 		self
 	end
 
-	def take_off
+	def take_off!
 		@flying = true
 		self
 	end

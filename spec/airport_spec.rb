@@ -7,13 +7,23 @@ describe Airport do
   let(:plane)         { double :plane         }
   let(:landed_plane)  { double :plane, land!  }
 
-
   def fill_airport
     airport.capacity.times {airport.land(plane)}
   end
  
   before(:each) do
     allow(airport).to receive(:stormy?).and_return(false)
+  end
+
+  context 'about the airport' do
+
+    it 'should have zero planes when created' do
+      expect(airport.plane_count).to eq(0)
+    end
+
+    it 'should have a default capacity of 6 when made' do
+      expect(airport.capacity).to eq(6)
+    end
   end
 
   context 'taking off and landing' do

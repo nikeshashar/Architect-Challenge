@@ -1,10 +1,11 @@
 module Weather
 
-	def stormy
-		rand(6) == 1 ? true : false
-	end
+  Stormy  = :stormy
+  Sunny   = :sunny
+  Weather = [Sunny, Stormy, Sunny, Sunny]
 
-	
+  def stormy?
+    Weather.sample == Stormy
+  end
 
-	
 end

@@ -1,3 +1,6 @@
+require 'plane'
+require 'weather'
+
 class Airport
 
 	DEFAULT_CAPACITY = 6
