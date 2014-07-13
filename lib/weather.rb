@@ -1,14 +1,10 @@
 module Weather
 
-	def randomise
-		rand(6)
+	def stormy
+		rand(6) == 1 ? true : false
 	end
 
-	def stormy?
-		if randomise < 2
-			stormy == true
-		end
-	end
+	
 
 	
 end

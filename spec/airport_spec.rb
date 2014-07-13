@@ -1,5 +1,6 @@
 require 'airport'
-# require 'weather'
+require 'weather'
+
 describe Airport do
 
   let(:airport)       { Airport.new           }
@@ -29,40 +30,41 @@ describe Airport do
       airport.clearTTO(plane)
       expect(airport.planes).to eq([])
     end
-
-    it 'cannot allow plane to land if full' do
-      fill_airport
-      expect{airport.land(plane)}.to raise_error(RuntimeError)
-    end
-  
   end
-  
+
   context 'traffic control' do
-    
+
     it 'should know when the airport is full' do
       expect(airport).not_to be_full
       fill_airport
       expect(airport).to be_full 
     end
+
+    it 'cannot allow plane to land if full' do
+      fill_airport
+      expect{airport.land(plane)}.to raise_error(RuntimeError)
+    end
   end 
 
-    context 'weather conditions' do
-      
-      it 'a plane cannot land in a storm' do
-        allow(airport).to receive(:stormy?).and_return(true)
-        expect{airport.clearTTO(plane)}.to raise_error(RuntimeError)
-      end
-    end 
+  context 'weather conditions' do
+    
+    it 'a plane cannot land in a storm' do
+      allow(airport).to receive(:stormy?).and_return(true)
+      expect{airport.clearTTO(plane)}.to raise_error(RuntimeError)
+    end
+  end 
 end
 
 describe "The grand finale (last spec)" do
+  
   it 'all planes can land and all planes can take off' do
+
   end
+
 end
 
 
 # Include a weather condition using a module.
-    # The weather must be random and only have two states "sunny" or "stormy".
     # Try and take off a plane, but if the weather is stormy, the plane can not take off and must remain in the airport.
     # 
     # This will require stubbing to stop the random return of the weather.
