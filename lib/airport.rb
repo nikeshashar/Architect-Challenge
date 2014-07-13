@@ -28,8 +28,10 @@ class Airport
 	end
 
 	def clearTTO(plane)
+		raise "Sorry, you cannot take off due to bad weather" if stormy?
 		raise "Go back!" if stormy?
-		planes.delete(plane)
+		planes.pop
+		plane.take_off!
 	end
 
 	def full?

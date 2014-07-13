@@ -3,9 +3,12 @@ require 'weather'
 
 describe Airport do
 
-  let(:airport)       { Airport.new           }
-  let(:plane)         { double :plane         }
-  let(:landed_plane)  { double :plane, land!  }
+  let(:airport)             { Airport.new                           }
+  let(:airport_with_plane)  { Airport.new(Planes: [landed_plane])   }
+  let(:plane)               { double :plane, take_off!: true        }
+  let(:landed_plane)        { double :plane, land!: true            }
+  let(:flying_plane)        { double :plane, take_off!: true        }
+  # let(:stormy_airport)      { Airport.new Planes: ([landed_plane]), stormy?: true }
 
   def fill_airport
     airport.capacity.times {airport.land(plane)}
@@ -61,6 +64,11 @@ describe Airport do
     it 'a plane cannot land in a storm' do
       allow(airport).to receive(:stormy?).and_return(true)
       expect{airport.clearTTO(plane)}.to raise_error(RuntimeError)
+    end
+
+    it 'cannot allow a plane to take off in a storm' do
+      allow(airport).to receive(:stormy?).and_return(true)
+      expect{airport.clearTTO(landed_plane)}.to raise_error(RuntimeError)
     end
   end 
 end
